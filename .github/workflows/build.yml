@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    #branches-ignore:
+    #- master
+        #schedule:
+        #- cron: "0 20 * * *" # = CST 4:00
+        #workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: fedora
+
+    steps:
+      - name: Checkout $GITHUB_WORKSPACE
+        uses: actions/checkout@v2
+
+      - name: Setup build environmnet
+        run: ./prepare.sh
+
+      - name: Build packages
+        run: ./build.sh
+
+      - name: List packages
+        run: ls -1 /home/builduser/localrepo
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: kernel-packages
+          path: |
+            rpmbuild/PKGS/*

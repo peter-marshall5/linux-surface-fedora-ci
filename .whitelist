@@ -1,0 +1,10 @@
+cppc_set_enable
+cppc_get_perf_ctrs
+cppc_get_perf_caps
+cppc_get_desired_perf
+acpi_cpc_valid
+cppc_set_perf
+filp_open
+cpuidle_get_driver
+cpufreq_get_current_driver
+cpufreq_get_policy
