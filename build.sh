@@ -17,4 +17,4 @@ do
 patch -p1 < $p
 done
 
-make KCFLAGS="-O3 -mtune=alderlake" LLVM=1 binrpm-pkg
+make KCFLAGS="-O3 -mtune=alderlake" LLVM=1 -j$(nproc) binrpm-pkg
