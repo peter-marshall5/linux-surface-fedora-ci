@@ -12,7 +12,7 @@ cd linux-6.2.7
 cp ../.config .
 cp ../.whitelist .
 
-for p in PATCHES
+for p in $PATCHES
 do
 patch -p1 < $p
 done
