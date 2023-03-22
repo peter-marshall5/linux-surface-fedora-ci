@@ -1,5 +1,5 @@
 #!/bin/bash
 set -euxo pipefail
 
-dnf -q upgrade
-dnf -q install base-devel clang lld
+dnf -y upgrade
+dnf -y install base-devel clang lld
