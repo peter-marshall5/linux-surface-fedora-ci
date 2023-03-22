@@ -2,4 +2,4 @@
 set -euxo pipefail
 
 dnf -y upgrade
-dnf -y install base-devel clang lld
+dnf -y install make kernel-devel clang lld
