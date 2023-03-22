@@ -24,7 +24,7 @@ jobs:
         run: ./build.sh
 
       - name: List packages
-        run: ls -1 /home/builduser/localrepo
+        run: ls -1 rpmbuild/PKGS/
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
