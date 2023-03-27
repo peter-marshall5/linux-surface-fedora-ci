@@ -1,13 +1,15 @@
 #!/bin/bash
 set -euxo pipefail
 
-PATCHES="../linux-surface/patches/6.2/*"
+VERSION="6.2.7"
+PATCHES="../linux-surface/patches/6.2/* ../linux-tkg/linux-tkg-patches/6.2/0002-clear-patches.patch"
 
 git clone https://github.com/linux-surface/linux-surface --depth 1
+git clone https://github.com/Frogging-Family/linux-tkg --depth 1
 
-wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.7.tar.xz" -qO - | tar xJf -
+wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$VERSION.tar.xz" -qO - | tar xJf -
 
-cd linux-6.2.7
+cd linux-$VERSION
 
 cp ../.config .
 cp ../.whitelist .
@@ -17,4 +19,4 @@ do
 patch -p1 < $p
 done
 
-make KCFLAGS="-O3 -mtune=alderlake" LLVM=1 -j$(nproc) binrpm-pkg
+make KCFLAGS="-mtune=alderlake" LLVM=1 -j$(nproc) binrpm-pkg
