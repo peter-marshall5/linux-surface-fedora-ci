@@ -2,10 +2,9 @@
 set -euxo pipefail
 
 VERSION="6.2.7"
-PATCHES="../linux-surface/patches/6.2/* ../linux-tkg/linux-tkg-patches/6.2/0002-clear-patches.patch"
+PATCHES="../linux-surface/patches/6.2/*"
 
 git clone https://github.com/linux-surface/linux-surface --depth 1
-git clone https://github.com/Frogging-Family/linux-tkg --depth 1
 
 wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$VERSION.tar.xz" -qO - | tar xJf -
 
